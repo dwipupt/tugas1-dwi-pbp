@@ -1,59 +1,196 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Website - Ni Kadek Dwi Puspitasari</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Dwi Puspitasari</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .profile-container {
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: #d63384;
+            font-weight: 600;
+            margin: 0 5px;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .active {
+            background: #ff69b4 !important;
+            color: white !important;
+        }
+
+        .content-box {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: left;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            color: #ff69b4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
+            border-left: 3px solid #ffc3a0;
+            padding-left: 12px;
+        }
+
+        b {
+            color: #ff69b4;
+            font-size: 12px;
+            display: block;
+        }
+
+        .map-container {
+            margin-top: 15px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #ffe4e1;
+            height: 250px;
+        }
+    </style>
 </head>
+
 <body>
 
-    <div class="header-text">
-        Universitas Hindu Negeri I Gusti Bagus Sugriwa<br>Denpasar
+    <div class="profile-container">
+        <img src="dwii.jpg.jpeg" class="profile-img">
     </div>
 
-    <div class="card">
-        <div class="profile-pic-container">
-            <img src="dwi.jpeg" alt="Ni Kadek Dwi Puspitasari">
+    <nav>
+        <a id="m1" class="active" onclick="gantiTab('m1','bio')">BIODATA</a>
+        <a id="m2" onclick="gantiTab('m2','edu')">PENDIDIKAN</a>
+        <a id="m3" onclick="gantiTab('m3','soc')">SOSMED</a>
+        <a id="m4" onclick="gantiTab('m4','tugas')">TUGAS</a>
+    </nav>
+
+    <div class="content-box">
+        <div id="bio" class="section show">
+            <h2>🌸 Biodata</h2>
+            <p><b>Nama Lengkap</b>NI KADEK DWI PUSPITASARI</p>
+            <p><b>NIM</b>2413231002</p>
+            <p><b>Tanggal Lahir</b>01 Mei 2006</p>
+            <p><b>Alamat</b>Jl. Oleg No.4, Dauh Yeh Cani, Kec. Abiansemal, Kabupaten Badung, Bali 80352</p>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.726584285223!2d115.20028097415444!3d-8.5249071863583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23b88cb56cae7%3A0x5ebbe3ddb3218f78!2sJl.%20Oleg%20No.4%2C%20Dauh%20Yeh%20Cani%2C%20Kec.%20Abiansemal%2C%20Kabupaten%20Badung%2C%20Bali%2080352!5e0!3m2!1sid!2sid!4v1715678901234!5m2!1sid!2sid"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
         </div>
 
-        <h2>Ni Kadek Dwi Puspitasari</h2>
-        <div class="greeting">Welcome to my personal website</div>
-
-        <div class="info-item">
-            <i class="fa-solid fa-id-card"></i>
-            <div class="info-text"><strong>NIM:</strong> 2413231002</div>
+        <div id="edu" class="section">
+            <h2>🎓 Pendidikan</h2>
+            <p>• <b>TK</b>TK KUNTALA DEWI 1</p>
+            <p>• <b>SD</b>SD NO 2 ABIANSEMAL DAUH YEH CANI</p>
+            <p>• <b>SMP</b>SMP NEGERI 1 ABIANSEMAL</p>
+            <p>• <b>SMA</b>SMA NEGERI 1 ABIANSEMAL</p>
         </div>
 
-        <div class="info-item">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <div class="info-text"><strong>Prodi:</strong> Informatika Denpasar Semester 2</div>
+        <div id="soc" class="section">
+            <h2>📱 Sosial media</h2>
+            <a href="https://www.instagram.com/its_dwi0?igsh=MWRoOHNiYWU4bm95aA==" target="_blank"
+                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+                Instagram @its_dwi0
+            </a>
+            <a href="https://www.tiktok.com/@dwi866992" target="_blank"
+                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: black;">
+                TikTok @dwi866992
+            </a>
         </div>
 
-        <div class="info-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <div class="info-text">Jl. Oleg No. 04, Dauh Yeh Cani, Abiansemal</div>
-        </div>
-
-        <div class="info-item">
-            <i class="fa-brands fa-whatsapp"></i>
-            <div class="info-text"><strong>WhatsApp:</strong> 6287840841043</div>
-        </div>
-
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.3400514169543!2d115.2079203!3d-8.5632976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23cb80e0e3c1d%3A0x875f69e67aa8a679!2sJl.%20Oleg%2C%20Dauh%20Yeh%20Cani%2C%20Kec.%20Abiansemal%2C%20Kabupaten%20Badung%2C%20Bali!5e0!3m2!1sid!2sid!4v1708150000000!5m2!1sid!2sid" 
-                width="100%" 
-                height="100%" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        <div id="tugas" class="section">
+            <h2>📂 Tugas Kuliah Web</h2>
+            <a href="pendidikan.html"
+                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: #ff69b4;">1.
+                Pendidikan (Ordered List)</a>
+            <a href="skil.html"
+                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: #ff9a9e;">2.
+                Skill Teknis (Unordered List)</a>
+            <a href="layout.html"
+                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: #d63384; text-decoration: none; font-weight: bold; background: #fecfef;">3.
+                Layout Web (Table)</a>
         </div>
     </div>
 
+    <script>
+        function gantiTab(menuId, sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('show'));
+            document.querySelectorAll('nav a').forEach(m => m.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('show');
+            document.getElementById(menuId).classList.add('active');
+        }
+    </script>
+
 </body>
-</html>
-</body>
+
+
 </html>

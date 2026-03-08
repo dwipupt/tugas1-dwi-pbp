@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Teknis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .content-box {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ff69b4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Modifikasi bullet menggunakan CSS */
+        ul.custom-skills {
+            list-style-type: none;
+            /* Menghapus default bullet */
+            padding: 0;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        ul.custom-skills li {
+            margin-bottom: 12px;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        ul.custom-skills li::before {
+            content: "💻";
+            /* Custom bullet icon */
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #ff69b4;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s background;
+        }
+
+        .back-btn:hover {
+            background: #d63384;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-box">
+        <h2>✨ Daftar Skill Teknis</h2>
+        <!-- Unordered List dengan modifikasi bullet -->
+        <ul class="custom-skills">
+            <li>Memasak</li>
+            <li>Majejaitan</li>
+            <li>Menari</li>
+            <li>Menyanyi</li>
+            <li>Menggambar</li>
+            <li>Bermain Alat Musik</li>
+        </ul>
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">Kembali ke Beranda</a>
+        </div>
+    </div>
+</body>
+
+</html>
