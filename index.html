@@ -1,196 +1,241 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dwi Puspitasari</title>
+    <title>Dwi Puspitasari - Portfolio Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%); 
+            margin: 0; padding: 20px;
             min-height: 100vh;
-            margin: 0;
-            padding: 40px 20px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        
+        .main-container { 
+            width: 100%; 
+            max-width: 950px; 
+            background: white; 
+            border-radius: 30px; 
+            overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
         }
 
-        .profile-container {
-            margin-bottom: 20px;
-        }
+        .header { background: #ff69b4; color: white; padding: 30px; text-align: center; font-size: 24px; font-weight: 600; }
 
-        .profile-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            object-fit: cover;
+        /* NAVIGASI ATAS */
+        #top-nav { 
+            background: #fff0f5; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap;
+            gap: 10px; 
+            padding: 15px; 
+            border-bottom: 2px solid #ffc3a0; 
         }
+        .nav-btn { padding: 10px 18px; cursor: pointer; border-radius: 12px; color: #d63384; font-weight: 600; transition: 0.3s; background: white; border: 1px solid #ffafbd; font-size: 13px; }
+        .nav-btn.active { background: #ff69b4; color: white; border-color: #ff69b4; }
 
-        nav {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 10px;
-            border-radius: 50px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(5px);
-        }
+        .content-area { padding: 40px; min-height: 550px; }
+        .section { display: none; }
+        .section.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        nav a {
-            display: inline-block;
-            padding: 10px 18px;
-            border-radius: 30px;
-            color: #d63384;
-            font-weight: 600;
-            margin: 0 5px;
-            text-decoration: none;
-            transition: 0.3s;
-            cursor: pointer;
-        }
+        /* BIODATA STYLE */
+        .profile-img { width: 140px; height: 140px; border-radius: 50%; display: block; margin: 0 auto 20px; border: 5px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.1); object-fit: cover; }
+        .bio-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .bio-table td { padding: 15px 10px; border-bottom: 1px solid #fff0f5; font-size: 15px; }
+        .label { font-weight: 600; color: #333; width: 150px; border-left: 4px solid #ffc3a0; padding-left: 15px !important; }
 
-        .active {
-            background: #ff69b4 !important;
-            color: white !important;
-        }
+        /* SKILL STYLE */
+        .skill-container { display: flex; flex-direction: column; gap: 15px; }
+        .skill-bar { background: #eee; border-radius: 20px; overflow: hidden; height: 20px; width: 100%; }
+        .skill-fill { background: #ff69b4; height: 100%; color: white; font-size: 12px; text-align: center; line-height: 20px; font-weight: bold; }
 
-        .content-box {
-            background: white;
-            width: 100%;
-            max-width: 400px;
-            padding: 30px;
-            border-radius: 25px;
-            text-align: left;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
+        /* LAYOUT SIDEBAR STYLE */
+        .layout-inner-table { width: 100%; border-collapse: collapse; border: 2px solid #ff69b4; border-radius: 15px; overflow: hidden; }
+        .layout-sidebar { width: 30%; background: #ffe4e1; vertical-align: top; padding: 25px; border-right: 2px solid #ff69b4; }
+        .layout-main { width: 70%; padding: 30px; vertical-align: top; background: #fff; }
+        .side-menu-box { padding: 15px; border-bottom: 1px solid #ffafbd; color: #d63384; font-weight: 600; cursor: pointer; }
+        .side-menu-box:hover { background: #ff69b4; color: white; }
 
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
+        /* FORM & CALC STYLE */
+        .calc-box { background: #fff0f5; padding: 20px; border-radius: 20px; max-width: 300px; margin: 0 auto; border: 2px solid #ffafbd; background: white; }
+        .calc-display { width: 100%; padding: 15px; font-size: 24px; text-align: right; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ffafbd; background: white; }
+        .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .btn-calc { padding: 15px; border-radius: 10px; border: 1px solid #ffafbd; cursor: pointer; font-weight: bold; background: white; }
+        .btn-calc:hover { background: #ff69b4; color: white; }
 
-        .show {
-            display: block !important;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        h2 {
-            color: #ff69b4;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        p {
-            margin: 10px 0;
-            line-height: 1.6;
-            border-left: 3px solid #ffc3a0;
-            padding-left: 12px;
-        }
-
-        b {
-            color: #ff69b4;
-            font-size: 12px;
-            display: block;
-        }
-
-        .map-container {
-            margin-top: 15px;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid #ffe4e1;
-            height: 250px;
-        }
+        .footer { background: #ff69b4; color: white; text-align: center; padding: 20px; font-size: 13px; }
     </style>
 </head>
-
 <body>
 
-    <div class="profile-container">
-        <img src="dwii.jpg.jpeg" class="profile-img">
+<div class="main-container">
+    <div class="header">DWI PUSPITASARI</div>
+
+    <div id="top-nav">
+        <div class="nav-btn active" onclick="showPage('bio', this)">BIODATA</div>
+        <div class="nav-btn" onclick="showPage('edu', this)">PENDIDIKAN</div>
+        <div class="nav-btn" onclick="showPage('skill', this)">SKILL</div>
+        <div class="nav-btn" onclick="switchToLayout()">LAYOUT</div>
+        <div class="nav-btn" onclick="showPage('form', this)">FORM</div>
+        <div class="nav-btn" onclick="showPage('calc', this)">KALKULATOR</div>
+        <div class="nav-btn" onclick="showPage('soc', this)">SOSMED</div>
     </div>
 
-    <nav>
-        <a id="m1" class="active" onclick="gantiTab('m1','bio')">BIODATA</a>
-        <a id="m2" onclick="gantiTab('m2','edu')">PENDIDIKAN</a>
-        <a id="m3" onclick="gantiTab('m3','soc')">SOSMED</a>
-        <a id="m4" onclick="gantiTab('m4','tugas')">TUGAS</a>
-    </nav>
-
-    <div class="content-box">
-        <div id="bio" class="section show">
-            <h2>🌸 Biodata</h2>
-            <p><b>Nama Lengkap</b>NI KADEK DWI PUSPITASARI</p>
-            <p><b>NIM</b>2413231002</p>
-            <p><b>Tanggal Lahir</b>01 Mei 2006</p>
-            <p><b>Alamat</b>Jl. Oleg No.4, Dauh Yeh Cani, Kec. Abiansemal, Kabupaten Badung, Bali 80352</p>
-
-            <div class="map-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.726584285223!2d115.20028097415444!3d-8.5249071863583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23b88cb56cae7%3A0x5ebbe3ddb3218f78!2sJl.%20Oleg%20No.4%2C%20Dauh%20Yeh%20Cani%2C%20Kec.%20Abiansemal%2C%20Kabupaten%20Badung%2C%20Bali%2080352!5e0!3m2!1sid!2sid!4v1715678901234!5m2!1sid!2sid"
+    <div class="content-area">
+        <div id="bio" class="section active">
+            <img src="dwii.jpg.jpeg" class="profile-img">
+            <h2 style="text-align:center; color:#ff69b4;">🌸 Biodata</h2>
+            <table class="bio-table">
+                <tr><td class="label">Nama Lengkap</td><td>: NI KADEK DWI PUSPITASARI</td></tr>
+                <tr><td class="label">NIM</td><td>: 2413231002</td></tr>
+                <tr><td class="label">Tanggal Lahir</td><td>: 01 Mei 2006</td></tr>
+                <tr><td class="label">Alamat</td><td>: Jl. Oleg No. 4, Dauh Yeh Cani, Kec. Abiansemal, Badung, Bali 80352</td></tr>
+            </table>
+                <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.726584285223!2d115.20028097415444!3d-8.5249071863583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23b88cb56cae7%3A0x5ebbe3ddb3218f78!2sJl.%20Oleg%20No.4%2C%20Dauh%20Yeh%20Cani%2C%20Kec.%20Abiansemal%2C%20Kabupaten%20Badung%2C%20Bali%2080352!5e0!3m2!1sid!2sid!4v1715678901234!5m2!1sid!2sid" 
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
         </div>
 
         <div id="edu" class="section">
-            <h2>🎓 Pendidikan</h2>
-            <p>• <b>TK</b>TK KUNTALA DEWI 1</p>
-            <p>• <b>SD</b>SD NO 2 ABIANSEMAL DAUH YEH CANI</p>
-            <p>• <b>SMP</b>SMP NEGERI 1 ABIANSEMAL</p>
-            <p>• <b>SMA</b>SMA NEGERI 1 ABIANSEMAL</p>
+            <h2 style="text-align:center; color:#ff69b4;">🎓 Riwayat Pendidikan</h2>
+            <div style="background:#fff0f5; padding:20px; border-radius:15px; border-left:8px solid #ff69b4;">
+                <p><b>• TK:</b> KUNTALA DEWI 1 (2011 - 2012)</p>
+                <p><b>• SD:</b> SD NO 2 ABIANSEMAL (2012 - 2018)</p>
+                <p><b>• SMP:</b> SMP N 1 ABIANSEMAL (2018 - 2021)</p>
+                <p><b>• SMA:</b> SMA NEGERI 1 ABIANSEMAL (2021 - 2024)</p>
+                <p><b>• Kuliah:</b> UHN IGB SUGRIWA (2024 - SEKARANG) </p>
+            </div>
+        </div>
+
+        <div id="skill" class="section">
+            <h2 style="text-align:center; color:#ff69b4;">⚡ Kemampuan (Skill)</h2>
+            <div class="skill-container">
+                <div>
+                    <p style="margin-bottom: 5px;">HTML & CSS</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 90%;">90%</div></div>
+                </div>
+                <div>
+                    <p style="margin-bottom: 5px;">JavaScript</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 75%;">75%</div></div>
+                </div>
+                <div>
+                    <p style="margin-bottom: 5px;">Microsoft Office</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%;">85%</div></div>
+                </div>
+                <div>
+                    <p style="margin-bottom: 5px;">Desain Grafis (Canva)</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%;">80%</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="layout" class="section">
+            <h2 style="color:#ff69b4; text-align:center;">📐 Layout Tabel Website</h2>
+            <table class="layout-inner-table">
+                <tr>
+                    <td class="layout-sidebar">
+                        <div style="font-weight: bold; margin-bottom: 15px; color: #ff69b4;">Sidebar Menu</div>
+                        <div class="side-menu-box" onclick="goBackHome()">Menu Utama (Home)</div>
+                        <div class="side-menu-box" onclick="showPage('bio')">Lihat Profil</div>
+                        <div class="side-menu-box" onclick="showPage('soc')">Sosial Media</div>
+                    </td>
+                    <td class="layout-main">
+                        <h3 style="margin-top:0;">Main Content</h3>
+                        <p>Navigasi atas disembunyikan untuk mendemonstrasikan layout dengan sidebar samping.</p>
+                        <button onclick="goBackHome()" style="background:#ff69b4; color:white; border:none; padding:12px 25px; border-radius:25px; cursor:pointer; font-weight:bold;">Kembali ke Beranda</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="form" class="section">
+            <h2 style="text-align:center; color:#ff69b4;">📝 Hubungi Saya</h2>
+            <div style="max-width:500px; margin:0 auto;">
+                <label style="font-weight:bold; color:#d63384;">Nama Pengguna:</label><br>
+                <input type="text" placeholder="Masukkan nama..." style="width:100%; padding:12px; margin:10px 0; border-radius:10px; border:1px solid #ffafbd;"><br>
+                <label style="font-weight:bold; color:#d63384;">Pesan/Komentar:</label><br>
+                <textarea placeholder="Tuliskan sesuatu..." style="width:100%; padding:12px; margin:10px 0; border-radius:10px; border:1px solid #ffafbd;" rows="4"></textarea>
+                <button style="width:100%; background:#ff69b4; color:white; border:none; padding:15px; border-radius:10px; font-weight:bold; cursor:pointer;" onclick="alert('Data Terkirim!')">Kirim Sekarang</button>
+            </div>
+        </div>
+
+        <div id="calc" class="section">
+            <h2 style="text-align:center; color:#ff69b4;">🧮 Kalkulator Digital</h2>
+            <div class="calc-box">
+                <input type="text" id="display" class="calc-display" readonly>
+                <div class="calc-grid">
+                    <button class="btn-calc" onclick="add('7')">7</button>
+                    <button class="btn-calc" onclick="add('8')">8</button>
+                    <button class="btn-calc" onclick="add('9')">9</button>
+                    <button class="btn-calc" style="background:#ffc3a0" onclick="add('/')">/</button>
+                    <button class="btn-calc" onclick="add('4')">4</button>
+                    <button class="btn-calc" onclick="add('5')">5</button>
+                    <button class="btn-calc" onclick="add('6')">6</button>
+                    <button class="btn-calc" style="background:#ffc3a0" onclick="add('*')">x</button>
+                    <button class="btn-calc" onclick="add('1')">1</button>
+                    <button class="btn-calc" onclick="add('2')">2</button>
+                    <button class="btn-calc" onclick="add('3')">3</button>
+                    <button class="btn-calc" style="background:#ffc3a0" onclick="add('-')">-</button>
+                    <button class="btn-calc" style="background:#ffafbd" onclick="clr()">C</button>
+                    <button class="btn-calc" onclick="add('0')">0</button>
+                    <button class="btn-calc" style="background:#ff69b4; color:white" onclick="solve()">=</button>
+                    <button class="btn-calc" style="background:#ffc3a0" onclick="add('+')">+</button>
+                </div>
+            </div>
         </div>
 
         <div id="soc" class="section">
-            <h2>📱 Sosial media</h2>
-            <a href="https://www.instagram.com/its_dwi0?igsh=MWRoOHNiYWU4bm95aA==" target="_blank"
-                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+            <h2 style="text-align:center; color:#ff69b4;">📱 Sosial Media</h2>
+            <a href="https://www.instagram.com/its_dwi0?igsh=MWRoOHNiYWU4bm95aA==" target="_blank" style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
                 Instagram @its_dwi0
             </a>
-            <a href="https://www.tiktok.com/@dwi866992" target="_blank"
-                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: black;">
+            <a href="https://www.tiktok.com/@dwi866992" target="_blank" style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: black;">
                 TikTok @dwi866992
             </a>
         </div>
-
-        <div id="tugas" class="section">
-            <h2>📂 Tugas Kuliah Web</h2>
-            <a href="pendidikan.html"
-                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: #ff69b4;">1.
-                Pendidikan (Ordered List)</a>
-            <a href="skil.html"
-                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: white; text-decoration: none; font-weight: bold; background: #ff9a9e;">2.
-                Skill Teknis (Unordered List)</a>
-            <a href="layout.html"
-                style="display: block; text-align: center; padding: 12px; margin-top: 10px; border-radius: 12px; color: #d63384; text-decoration: none; font-weight: bold; background: #fecfef;">3.
-                Layout Web (Table)</a>
-        </div>
     </div>
 
-    <script>
-        function gantiTab(menuId, sectionId) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('show'));
-            document.querySelectorAll('nav a').forEach(m => m.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('show');
-            document.getElementById(menuId).classList.add('active');
+    <div class="footer">Footer © 2026 Ni Kadek Dwi Puspitasari | Pemrograman Berbasis Platform</div>
+</div>
+
+<script>
+    function showPage(id, btn) {
+        document.getElementById('top-nav').style.display = 'flex';
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        if(btn) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         }
-    </script>
+    }
+
+    function switchToLayout() {
+        document.getElementById('top-nav').style.display = 'none';
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById('layout').classList.add('active');
+    }
+
+    function goBackHome() {
+        showPage('bio', document.querySelector('.nav-btn:first-child'));
+    }
+
+    // Fungsi Kalkulator
+    function add(v) { document.getElementById('display').value += v; }
+    function clr() { document.getElementById('display').value = ""; }
+    function solve() {
+        try { document.getElementById('display').value = eval(document.getElementById('display').value); }
+        catch { alert("Gagal menghitung!"); clr(); }
+    }
+</script>
 
 </body>
-
-
 </html>
